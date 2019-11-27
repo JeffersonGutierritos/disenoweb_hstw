@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('title', 'HSTW')
-
+<link rel="icon" type="image/x-icon" href="img/logohstw.ico">
 @section('content_header')
     <h1>Bienvenido a HSTW</h1>
 @stop
@@ -11,10 +11,12 @@
 @stop
 
 @section('css')
-    @push('css')
-    @push('js')
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/base/base.css">
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script src="js/bootstrap/bootstrap.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/base/base.js"></script>
 @stop
