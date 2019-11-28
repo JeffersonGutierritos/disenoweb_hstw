@@ -13,6 +13,8 @@ function cambiarestilo() {
 //     $(".content-wrapper").innerHTML=
 // }
 
+function gestionarClientes(){
+    $(".content-wrapper").innerHTML = "<h1>Gestionar CLIETNEEEEEES</h1>"
 }
 
 
