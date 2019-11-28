@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('base.base');
 });
+Route::get('/hstw', function () {
+    return view('base.base');
+});
