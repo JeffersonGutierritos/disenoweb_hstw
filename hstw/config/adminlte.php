@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>HS</b>TW',
+    'logo' => '<b>HSTW</b>',
     'logo_img' => 'img/logohstw.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
@@ -174,7 +174,7 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
+            'text' => 'Search',
             'search' => true,
             'topnav' => true,
         ],
@@ -184,74 +184,53 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
+            'text'        => 'Inicio',
             'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'icon'        => 'fas fa-fw fa-home',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'PRESTAMOS'],
         [
-            'text' => 'profile',
+            'text' => 'Gestionar Clientes',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Verificar Buró de Crédito',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-check',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Prestamos',
+            'icon'    => 'fas fa-fw fa-money-bill-alt',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Generar reportes préstamos',
                     'url'  => '#',
+                    'icon' => ''
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text'    => 'Asignar Prestamos',
                     'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-//                            'submenu' => [
-//                                [
-//                                    'text' => 'level_three',
-//                                    'url'  => '#',
-//                                ],
-//                                [
-//                                    'text' => 'level_three',
-//                                    'url'  => '#',
-//                                ],
-//                            ],
-                        ],
-                    ],
+                    'icon' => ''
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'    => 'Gestionar Área de Cobranza'   ,
+                    'url'     => '#',
+                    'icon'    => ''
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'TARJETAS'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text' => 'Asignar tarjetas',
+            'icon' => 'fas fa-fw fa-credit-card',
         ],
+        ['header' => 'CUENTA'],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
+            'text' => 'Cerrar Sesión',
+            'icon' => 'fas fa-fw fa-sign-out-alt',
         ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
-        ],
+
     ],
 
     /*
