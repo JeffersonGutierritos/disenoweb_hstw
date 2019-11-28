@@ -7,7 +7,7 @@ function cambiarestilo() {
     $(".nav-header").css("color","#000000")
 }
 
-function cargarbase() {
-    $(".content-wrapper").innerHTML=
-}
+// function cargarbase() {
+//     $(".content-wrapper").innerHTML=
+// }
 
