@@ -3,11 +3,11 @@
 @section('title', 'HSTW')
 <link rel="icon" type="image/x-icon" href="img/logohstw.ico">
 @section('content_header')
-    <h1>Bienvenido a HSTW</h1>
+{{--    <h1>Bienvenido a HSTW</h1>--}}
 @stop
 
 @section('content')
-    <p>Contenido</p>
+{{--    <p>Contenido</p>--}}
 @stop
 
 @section('css')

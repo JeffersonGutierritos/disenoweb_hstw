@@ -174,48 +174,55 @@ return [
 
     'menu' => [
         [
-            'text' => 'Search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
         [
             'text'        => 'Inicio',
-            'url'         => 'admin/pages',
+            'url'         => '#',
+            'id'          => 'inicio',
             'icon'        => 'fas fa-fw fa-home',
         ],
-        ['header' => 'PRESTAMOS'],
+        ['header' => 'PRÉSTAMOS'],
         [
             'text' => 'Gestionar Clientes',
-            'url'  => 'admin/settings',
+            'url'  => '#',
+            'id'   => 'gestionar',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Verificar Buró de Crédito',
-            'url'  => 'admin/settings',
+            'url'  => '#',
+            'id'   => 'verificarburo',
             'icon' => 'fas fa-fw fa-check',
         ],
         [
-            'text'    => 'Prestamos',
+            'text'    => 'Préstamos',
             'icon'    => 'fas fa-fw fa-money-bill-alt',
             'submenu' => [
                 [
-                    'text' => 'Generar reportes préstamos',
+                    'text' => 'Calcular préstamos',
                     'url'  => '#',
+                    'id'   => 'calcularpre',
                     'icon' => ''
                 ],
                 [
-                    'text'    => 'Asignar Prestamos',
+                    'text' => 'Generar reportes préstamos',
+                    'url'  => '#',
+                    'id'   => 'genrepopre',
+                    'icon' => ''
+                ],
+                [
+                    'text'    => 'Asignar Préstamos',
                     'url'     => '#',
+                    'id'   => 'asignarpre',
                     'icon' => ''
                 ],
                 [
                     'text'    => 'Gestionar Área de Cobranza'   ,
                     'url'     => '#',
+                    'id'   => 'gestacob',
                     'icon'    => ''
                 ],
             ],
@@ -224,11 +231,15 @@ return [
         [
             'text' => 'Asignar tarjetas',
             'icon' => 'fas fa-fw fa-credit-card',
+            'url'     => '#',
+            'id'   => 'asigtar'
         ],
         ['header' => 'CUENTA'],
         [
             'text' => 'Cerrar Sesión',
             'icon' => 'fas fa-fw fa-sign-out-alt',
+            'url'     => '#',
+            'id'   => 'logout',
         ],
 
     ],
