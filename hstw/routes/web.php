@@ -17,3 +17,7 @@ Route::get('/', function () {
 Route::get('/hstw', function () {
     return view('base.base');
 });
+Route::get('getClientes', 'ClienteController@getClientes');
+Route::get('viewGestionarClientes', function(){
+    return view('gestionarClientes');
+});

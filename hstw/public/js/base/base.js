@@ -51,18 +51,31 @@ function cargarinicio() {
 
 function cargargestionarclientes() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Gestionar CLIETNEEEEEES</h1>");
-}
+    //$(".content-wrapper").load("viewGestionarClientes");
+    $.ajax(
+        'getClientes',
+        {
+            success: function(data) {
+                $(".content-wrapper").load("viewGestionarClientes",{clientes:data});
+                
+            },
+            error: function() {
+                alert('There was some error performing the AJAX call!');
+            }
+         }
+      );
+    
+}//Jorge
 
 function cargarverificarburo() {
     $(".content-wrapper").empty();
     $(".content-wrapper").html("<h1>Verificar buró de crédito</h1>");
-}
+}//Jorge
 
 function cargarcalcularpre() {
     $(".content-wrapper").empty();
     $(".content-wrapper").html("<h1>Calcular préstamo</h1>");
-}
+}//Jorge
 
 function cargargenrepopre() {
     $(".content-wrapper").empty();
