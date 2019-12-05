@@ -46,24 +46,43 @@ function cambiarestilo() {
 
 function cargarinicio() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Bienvenido a HSTW</h1>");
+    $(".content-wrapper").load("viewInicio");
 }
 
 function cargargestionarclientes() {
     $(".content-wrapper").empty();
     //$(".content-wrapper").load("viewGestionarClientes");
-    $.ajax(
-        'getClientes',
-        {
-            success: function(data) {
-                $(".content-wrapper").load("viewGestionarClientes",{clientes:data});
-                
-            },
-            error: function() {
-                alert('There was some error performing the AJAX call!');
-            }
-         }
-      );
+
+      $.ajax({
+        
+        type: 'GET',
+        url: 'getClientes',
+        dataType: 'json',
+        
+        success: function(data){
+            console.log(data)
+            
+            $(".content-wrapper").load("viewGestionarClientes");
+            var tbody = $("#tbody")
+            var cont = ''
+
+            $.each(data, function(i,r){
+                cont+='<tr>'+
+                '<th scope="row">'+r.id_cliente+'</th>'+
+                    '<td>'+r.nombre+'</td>'+
+                    '<td>'+r.apellidos+'</td>'+
+                    '<td>'+r.fecha_nacimiento+'</td>'+
+                    '<td>'+r.curp+'</td>'+
+                    '<td>'+r.rfc+'</td>'+
+                '</tr>'
+            });
+            tbody.append(cont);
+           
+        },
+        error: function(){
+            alert('There was some error performing the AJAX call!');
+        }
+     });
     
 }//Jorge
 
