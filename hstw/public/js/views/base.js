@@ -36,7 +36,6 @@ $("#gestacob").click(function(){
 $("#asigtar").click(function(){
     cargarasigtar();
 });
-
 // JAVASCRIPT //
 
 function cambiarestilo() {
@@ -51,20 +50,37 @@ function cargarinicio() {
 
 function cargargestionarclientes() {
     $(".content-wrapper").empty();
-    //$(".content-wrapper").load("viewGestionarClientes");
-    $.ajax(
-        'getClientes',
-        {
-            success: function(data) {
-                $(".content-wrapper").load("viewGestionarClientes",{clientes:data});
-                
-            },
-            error: function() {
-                alert('There was some error performing the AJAX call!');
-            }
-         }
-      );
-    
+    var cont="";
+    $.ajax({
+        url:"/getClientes",
+        type:"get",
+        success:function (response) {
+            $(".content-wrapper").load("viewGestionarClientes");
+            setTimeout(function(){
+                let nombres=$("#bodytabla");
+                $.each(response, function(i,r){
+                    cont+="<tr>" +
+                        "<td>"+r.id_cliente+"</td>" +
+                        "<td>"+r.nombre+"</td>" +
+                        "<td>"+r.apellidos+"</td>" +
+                        "<td>"+r.fecha_nacimiento+"</td>" +
+                        "<td>"+r.curp+"</td>" +
+                        "<td>"+r.rfc+"</td>" +
+                        "</tr>";
+                });
+                nombres.append(cont);
+                $("#bodytabla tr").click(function(){
+                    $(this).addClass('selected').siblings().removeClass('selected');
+                    var value=$(this).find('td:first-child').html();
+                    alert(value);
+                });
+                }, 1000);
+
+        },
+        error: function() {
+            alert('There was some error performing the AJAX call!');
+        }
+    });
 }//Jorge
 
 function cargarverificarburo() {

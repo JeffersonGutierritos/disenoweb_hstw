@@ -3,6 +3,7 @@
 @section('title', 'HSTW')
 <link rel="icon" type="image/x-icon" href="img/logohstw.ico">
 @section('content_header')
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
 {{--    <h1>Bienvenido a HSTW</h1>--}}
 @stop
 
@@ -18,5 +19,5 @@
 @section('js')
     <script src="js/bootstrap/bootstrap.js"></script>
     <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/base/base.js"></script>
+    <script src="js/views/base.js"></script>
 @stop
