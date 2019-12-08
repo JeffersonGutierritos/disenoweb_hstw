@@ -15,6 +15,6 @@ class ClienteController extends Controller
     }
     public function getViewClientes(Request $request){
 
-        return view("gestionarClientes");
+        return view("modulos.gestionarClientes");
     }
 }   

@@ -24,7 +24,7 @@ Route::get('viewInicio', function(){
     return view('inicio');
 });
 Route::get('viewGestionarClientes', function(){
-    return view('gestionarClientes');
+    return view('modulos.gestionarClientes');
 });
 Route::get('/login', function () {
     return view('login.login');
