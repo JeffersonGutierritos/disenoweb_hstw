@@ -22,10 +22,6 @@ Route::get('viewGestionarClientes','ClienteController@getViewClientes');
 Route::get('viewInicio', function(){
     return view('inicio');
 });
-Route::get('viewGestionarClientes', function(){
-    return view('modulos.gestionarClientes');
-});
-
 Route::get('/login', function () {
     return view('login.login');
 });
