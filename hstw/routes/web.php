@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('base.base');
 });
@@ -26,6 +25,7 @@ Route::get('viewInicio', function(){
 Route::get('viewGestionarClientes', function(){
     return view('modulos.gestionarClientes');
 });
+
 Route::get('/login', function () {
     return view('login.login');
 });
