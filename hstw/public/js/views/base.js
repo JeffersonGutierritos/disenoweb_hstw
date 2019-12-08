@@ -45,7 +45,7 @@ function cambiarestilo() {
 
 function cargarinicio() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Bienvenido a HSTW</h1>");
+    $(".content-wrapper").load("viewInicio");
 }
 
 function cargargestionarclientes() {
