@@ -66,6 +66,9 @@ function cargargestionarclientes() {
                         "<td>"+r.fecha_nacimiento+"</td>" +
                         "<td>"+r.curp+"</td>" +
                         "<td>"+r.rfc+"</td>" +
+                        "<td><button class='btn-block btn btn-outline-light' id='btnDireccion' type='button'><i class='fas fa-eye'></i></button></td>"+
+                        "<td><button class='btn btn-primary' id='btnEditar' type='button'><i class='fas fa-edit'></i></button></td>"+
+                        "<td><button class='btn btn-danger' id='btnEliminar' type='button'><i class='fas fa-trash-alt'></i></button></td>"+
                         "</tr>";
                 });
                 nombres.append(cont);
@@ -85,7 +88,7 @@ function cargargestionarclientes() {
 
 function cargarverificarburo() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Verificar buró de crédito</h1>");
+    $(".content-wrapper").load("viewVerificarBuro");
 }//Jorge
 
 function cargarcalcularpre() {
@@ -95,12 +98,12 @@ function cargarcalcularpre() {
 
 function cargargenrepopre() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Generar reporte de préstamos</h1>");
+    $(".content-wrapper").load("viewGenerarReportesPrestamos");
 }
 
 function cargarasignarpre() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Asignar préstamos</h1>");
+    $(".content-wrapper").load("viewAsignarPrestamos");
 }
 
 function cargargestacob() {
@@ -110,5 +113,5 @@ function cargargestacob() {
 
 function cargarasigtar() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Gestionar tarjetas de débito y crédito</h1>");
+    $(".content-wrapper").load("viewAsignarTarjetas");
 }

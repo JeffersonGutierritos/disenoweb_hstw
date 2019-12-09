@@ -16,9 +16,21 @@ Route::get('/', function () {
 Route::get('/hstw', function () {
     return view('base.base');
 });
+//Controllers
 Route::get('getClientes', 'ClienteController@getClientes');
 
+//views
 Route::get('viewGestionarClientes','ClienteController@getViewClientes');
+Route::get('viewVerificarBuro', 'ClienteController@getviewverificarburo');
+Route::get('viewGenerarReportesPrestamos', function(){
+    return view('modulos.generarReportesPrestamos');
+});
+Route::get('viewAsignarPrestamos', function(){
+    return view('modulos.asignarPrestamos');
+});
+Route::get('viewAsignarTarjetas', function(){
+    return view('modulos.asginarTarjetas');
+});
 Route::get('viewInicio', function(){
     return view('inicio');
 });

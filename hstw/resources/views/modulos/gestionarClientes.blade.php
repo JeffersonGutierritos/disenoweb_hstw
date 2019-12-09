@@ -19,14 +19,14 @@
       <div class="col-md-10">
               <table class="table table-hover table-responsive">
                     <thead>
-                        <tr class="bg-danger"
+                        <tr class="bg-danger">
                           <th scope="col">#</th>
                           <th scope="col">Nombre</th>
                           <th scope="col">Apellidos</th>
                           <th scope="col">Fecha de Nacimiento</th>
                           <th scope="col">CURP</th>
                           <th scope="col">RFC</th>
-                          <th scope="col">Direccion</th>
+                          <th scope="col">Direccion/es</th>
                           <th scope="col">Editar</th>
                           <th scope="col">Eliminar</th>
                         </tr>

@@ -16,4 +16,7 @@ class ClienteController extends Controller
     public function  getviewclientes(){
         return view('modulos.gestionarClientes');
     }
+    public function getviewverificarburo(){
+        return view('modulos.verificarBuroCredito');
+    }
 }

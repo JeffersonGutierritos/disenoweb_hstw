@@ -2,12 +2,17 @@
   background-color: #FFFFFF;
 }
 
-p, b, span, i {
+.sidebar p, .sidebar b, .sidebar span, .sidebar i {
   color: #000000;
 }
 
 .main-header {
   background-color: #dc0007;
+}
+
+i .btn .fa-search .fa-print .fa-credit-card {
+  color: white;
+  font-size: 48px;
 }
 
 /*# sourceMappingURL=base.css.map */

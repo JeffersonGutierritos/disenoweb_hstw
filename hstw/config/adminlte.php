@@ -182,24 +182,24 @@ return [
             'text'        => 'Inicio',
             'url'         => '#',
             'id'          => 'inicio',
-            'icon'        => 'fas fa-fw fa-home',
+            'icon'        => 'fas fa-home',
         ],
         ['header' => 'PRÉSTAMOS'],
         [
             'text' => 'Gestionar Clientes',
             'url'  => '#',
             'id'   => 'gestionar',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-user',
         ],
         [
             'text' => 'Verificar Buró de Crédito',
             'url'  => '#',
             'id'   => 'verificarburo',
-            'icon' => 'fas fa-fw fa-check',
+            'icon' => 'fas fa-check',
         ],
         [
             'text'    => 'Préstamos',
-            'icon'    => 'fas fa-fw fa-money-bill-alt',
+            'icon'    => 'fas fa-money-bill-alt',
             'submenu' => [
                 [
                     'text' => 'Calcular préstamos',
@@ -230,14 +230,14 @@ return [
         ['header' => 'TARJETAS'],
         [
             'text' => 'Asignar tarjetas',
-            'icon' => 'fas fa-fw fa-credit-card',
+            'icon' => 'fas fa-credit-card',
             'url'     => '#',
             'id'   => 'asigtar'
         ],
         ['header' => 'CUENTA'],
         [
             'text' => 'Cerrar Sesión',
-            'icon' => 'fas fa-fw fa-sign-out-alt',
+            'icon' => 'fas fa-sign-out-alt',
             'url'     => '#',
             'id'   => 'logout',
         ],
