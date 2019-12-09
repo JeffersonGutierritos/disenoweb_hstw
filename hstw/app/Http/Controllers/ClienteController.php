@@ -8,18 +8,25 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    public function getClientes(Request $request){
+    public function getClientes(){
         $clientes = DB::table('clientes')->get();
 
         return $clientes;
     }
-    public function getViewClientes(Request $request){
+    public function getViewClientes(){
 
-        return view("gestionarClientes");
+        return view("modulos.gestionarClientes");
     }
 
     public function getviewverificarburo(){
         return view('modulos.verificarBuroCredito');
+    }
+
+    public function deleteCliente(Request $r){
+        dd($r->id);
+        $id = 1;
+        DB::table('clientes')->where('id','=', $id);
+        
     }
 }
  

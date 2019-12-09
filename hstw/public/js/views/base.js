@@ -66,16 +66,27 @@ function cargargestionarclientes() {
                         "<td>"+r.fecha_nacimiento+"</td>" +
                         "<td>"+r.curp+"</td>" +
                         "<td>"+r.rfc+"</td>" +
-                        "<td><button class='btn-block btn btn-outline-light' id='btnDireccion' type='button'><i class='fas fa-eye'></i></button></td>"+
+                        "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button'><i class='fas fa-eye'></i></button></td>"+
                         "<td><button class='btn btn-primary' id='btnEditar' type='button'><i class='fas fa-edit'></i></button></td>"+
                         "<td><button class='btn btn-danger' id='btnEliminar' type='button'><i class='fas fa-trash-alt'></i></button></td>"+
                         "</tr>";
                 });
                 nombres.append(cont);
-                $("#bodytabla tr").click(function(){
+                $("td #btnEliminar").click(function(){
                     $(this).addClass('selected').siblings().removeClass('selected');
-                    var value=$(this).find('td:first-child').html();
-                    alert(value);
+                    var idCliente=$('#bodytabla tr').find('td:first-child').html();
+                    //alert(value);
+                    $.ajax({
+                        url:"deleteCliente",
+                        type:"post",
+                        data: {id:idCliente},
+                        success:function (response) {
+                            alert(response.status)
+                        },
+                        error: function() {
+                            alert('There was some error performing the AJAX call!');
+                        }
+                    });
                 });
                 }, 1000);
 
@@ -108,7 +119,7 @@ function cargarasignarpre() {
 
 function cargargestacob() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Gestionar cobranza</h1>");
+    $(".content-wrapper").load("viewGestionarCobranza");
 }
 
 function cargarasigtar() {

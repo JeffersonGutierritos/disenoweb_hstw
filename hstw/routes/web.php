@@ -19,21 +19,10 @@ Route::get('/hstw', function () {
 //Controllers
 Route::get('getClientes', 'ClienteController@getClientes');
 
+
 //views
-Route::get('viewGestionarClientes','ClienteController@getViewClientes');
-Route::get('viewVerificarBuro', 'ClienteController@getviewverificarburo');
-Route::get('viewGenerarReportesPrestamos', function(){
-    return view('modulos.generarReportesPrestamos');
-});
-Route::get('viewAsignarPrestamos', function(){
-    return view('modulos.asignarPrestamos');
-});
-Route::get('viewAsignarTarjetas', function(){
-    return view('modulos.asginarTarjetas');
-});
-Route::get('viewInicio', function(){
-    return view('inicio');
-});
+
+
 
 
 Route::get('/login', function () {
@@ -53,6 +42,23 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('getClientes', 'ClienteController@getClientes');
     Route::get('viewGestionarClientes', function () {
-        return view('gestionarClientes');
+        return view('modulos.gestionarClientes');
+    });
+    Route::get('viewGestionarCobranza', function(){
+        return view('modulos.gestionarAreaCobranza');
+    });
+    Route::post('deleteCliente', 'ClienteController@deleteCliente');
+    Route::get('viewVerificarBuro', 'ClienteController@getviewverificarburo');
+    Route::get('viewGenerarReportesPrestamos', function(){
+        return view('modulos.generarReportesPrestamos');
+    });
+    Route::get('viewAsignarPrestamos', function(){
+        return view('modulos.asignarPrestamos');
+    });
+    Route::get('viewAsignarTarjetas', function(){
+        return view('modulos.asginarTarjetas');
+    });
+    Route::get('viewInicio', function(){
+        return view('inicio');
     });
 });

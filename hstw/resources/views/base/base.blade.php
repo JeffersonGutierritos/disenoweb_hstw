@@ -18,5 +18,6 @@
 @section('js')
     <script src="js/bootstrap/bootstrap.js"></script>
     <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/base/base.js"></script>
+    <script src="js/views/base.js"></script>
+    <script src="js/views/gestionarClientes.js"></script>
 @stop
