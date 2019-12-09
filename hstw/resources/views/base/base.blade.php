@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+<input type="hidden" name="_token" value="{{csrf_token()}}">
 {{--    <p>Contenido</p>--}}
 @stop
 

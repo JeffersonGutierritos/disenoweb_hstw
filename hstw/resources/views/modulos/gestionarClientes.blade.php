@@ -39,3 +39,28 @@
       </div>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Estas a punto de eliminar un Cliente. ¿Estas seguro?
+        </div>
+        <div class="modal-footer">
+          <div class="col-6">
+              <button type="button" class="btn btn-block btn-success" data-dismiss="modal" id="modalSi">Si</button>
+          </div>
+          <div class="col-6">
+              <button type="button" class="btn btn-block btn-danger" data-dismiss="modal">No</button>
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
