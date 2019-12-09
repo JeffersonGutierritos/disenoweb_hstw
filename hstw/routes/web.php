@@ -34,6 +34,25 @@ Route::get('viewAsignarTarjetas', function(){
 Route::get('viewInicio', function(){
     return view('inicio');
 });
+
+
 Route::get('/login', function () {
     return view('login.login');
+});
+Auth::routes();
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/logout', 'HomeController@logout')->name('logout');
+    Route::get('/', function () {
+        return view('base.base');
+    });
+    Route::get('/hstw', function () {
+        return view('base.base');
+    });
+    Route::get('getClientes', 'ClienteController@getClientes');
+    Route::get('viewGestionarClientes', function () {
+        return view('gestionarClientes');
+    });
 });

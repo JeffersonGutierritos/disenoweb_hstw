@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>HSTW</b>',
+    'logo' => '<img src="img/logohstw.png" width="100" />',
     'logo_img' => 'img/logohstw.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
@@ -136,7 +136,7 @@ return [
 
     'dashboard_url' => '/',
 
-    'logout_url' => 'logout',
+    'logout_url' => '/logout',
 
     'login_url' => 'login',
 
@@ -220,7 +220,7 @@ return [
                     'icon' => ''
                 ],
                 [
-                    'text'    => 'Gestionar Área de Cobranza'   ,
+                    'text'    => 'Gestionar Área de Cobranza',
                     'url'     => '#',
                     'id'   => 'gestacob',
                     'icon'    => ''
@@ -237,8 +237,9 @@ return [
         ['header' => 'CUENTA'],
         [
             'text' => 'Cerrar Sesión',
-            'icon' => 'fas fa-sign-out-alt',
-            'url'     => '#',
+
+            'icon' => 'fas fa-fw fa-sign-out-alt',
+            'url'     => '/logout',
             'id'   => 'logout',
         ],
 
