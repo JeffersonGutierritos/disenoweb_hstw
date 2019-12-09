@@ -3,7 +3,7 @@
 @section('title', 'HSTW')
 <link rel="icon" type="image/x-icon" href="img/logohstw.ico">
 @section('content_header')
-{{--    <h1>Bienvenido a HSTW</h1>--}}
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
 @stop
 
 @section('content')
