@@ -1,5 +1,3 @@
-import { timeout } from "q";
-
 // SELECTORES //
 
 $(window).ready(function(){
@@ -53,41 +51,38 @@ function cargarinicio() {
 
 function cargargestionarclientes() {
     $(".content-wrapper").empty();
-    var cont="";
-    $.ajax({
-        url:"/getClientes",
-        type:"get",
-        success:function (response) {
-            console.log(response)
-            debugger;
-            $(".content-wrapper").load("viewGestionarClientes");
-            setTimeout(function(){
-                let nombres=$("#tbody");
-                $.each(response, function(i,r){
-                    cont+="<tr>" +
-                        "<td>"+r.id_cliente+"</td>" +
-                        "<td>"+r.nombre+"</td>" +
-                        "<td>"+r.apellidos+"</td>" +
-                        "<td>"+r.fecha_nacimiento+"</td>" +
-                        "<td>"+r.curp+"</td>" +
-                        "<td>"+r.rfc+"</td>" +
-                        "<td><button class='btn btn-primary' id='btnEditar' type='button'>Editar</button></td>"+
-                        "<td><button class='btn btn-danger' id='btnEliminar' type='button'>Eliminar</button></td>"+
-                        "</tr>";
-                });
-                nombres.append(cont);
-                $("#tbody tr").click(function(){
-                    $(this).addClass('selected').siblings().removeClass('selected');
-                    var value=$(this).find('td:first-child').html();
-                    alert(value);
-                });
-                }, 1000);
+    //$(".content-wrapper").load("viewGestionarClientes");
 
+      $.ajax({
+        
+        type: 'GET',
+        url: 'getClientes',
+        dataType: 'json',
+        
+        success: function(data){
+            console.log(data)
+            
+            $(".content-wrapper").load("viewGestionarClientes");
+            var tbody = $("#tbody")
+            var cont = ''
+
+            $.each(data, function(i,r){
+                cont+='<tr>'+
+                '<th scope="row">'+r.id_cliente+'</th>'+
+                    '<td>'+r.nombre+'</td>'+
+                    '<td>'+r.apellidos+'</td>'+
+                    '<td>'+r.fecha_nacimiento+'</td>'+
+                    '<td>'+r.curp+'</td>'+
+                    '<td>'+r.rfc+'</td>'+
+                '</tr>'
+            });
+            tbody.append(cont);
+           
         },
-        error: function() {
+        error: function(){
             alert('There was some error performing the AJAX call!');
         }
-    });
+     });
     
 }//Jorge
 
