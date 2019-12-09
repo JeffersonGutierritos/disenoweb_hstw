@@ -58,7 +58,7 @@ function cargargestionarclientes() {
                 let nombres=$("#bodytabla");
                 $.each(response, function(i,r){
                     cont+="<tr>" +
-                        "<td>"+r.id_cliente+"</td>" +
+                        "<td id='idcliente'>"+r.id_cliente+"</td>" +
                         "<td>"+r.nombre+"</td>" +
                         "<td>"+r.apellidos+"</td>" +
                         "<td>"+r.fecha_nacimiento+"</td>" +
@@ -70,20 +70,21 @@ function cargargestionarclientes() {
                         "</tr>";
                 });
                 nombres.append(cont);
-                $("td #btnEliminar").click(function(){
-                    var idCliente=$('#bodytabla tr').find('td:first').html();
-                    alert(idCliente);
-                    deleteCliente(idCliente);
-                    
-                });
-                }, 1000);
 
+                    $("#bodytabla tr td #btnEliminar").click(function(){
+                        $(this).addClass('selected').siblings().removeClass('selected');
+                        var idCliente=$(this).parent().siblings('td:first').html();
+                        // alert("seleccionado "+idCliente);
+                        eliminarcliente(idCliente);
+                    });
+                }, 1000);
         },
         error: function() {
             alert('There was some error performing the AJAX call!');
         }
     });
 }//Jorge
+
 
 function deleteCliente(idCliente){
     $("#modalSi").click(function(){
@@ -103,7 +104,20 @@ function deleteCliente(idCliente){
     
 }
     
-    
+function eliminarcliente(cliente){
+    var token=$("input[name=_token]").val();
+    $.ajax({
+        url:"deleteCliente",
+        type:"post",
+        data: {id:cliente, _token:token},
+        success:function (response) {
+            alert(response)
+        },
+        error: function() {
+            alert('There was some error performing the AJAX call!');
+        }
+    });
+}
 
 
 function cargarverificarburo() {

@@ -13,10 +13,10 @@
     <div class="col-md-3">
       <button type="button" class="btn-danger btn" id="btnRegistrarCliente">Registrar Cliente</button>
     </div>
-    
+
   </div>
   <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-12">
               <table class="table table-hover table-responsive">
                     <thead>
                         <tr class="bg-danger">
@@ -32,13 +32,14 @@
                         </tr>
                       </thead>
                       <tbody id="bodytabla">
-                      
-                      
+
+
                       </tbody>
               </table>
       </div>
   </div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -64,3 +65,4 @@
         </div>
       </div>
     </div>
+

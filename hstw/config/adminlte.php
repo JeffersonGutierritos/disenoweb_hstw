@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<img src="img/logohstw.png" width="100" />',
+    'logo' => 'HSTW',
     'logo_img' => 'img/logohstw.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
