@@ -23,14 +23,10 @@ Route::get('getClientes', 'ClienteController@getClientes');
 //views
 
 
-
-
 Route::get('/login', function () {
     return view('login.login');
 });
 Auth::routes();
-
-
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/logout', 'HomeController@logout')->name('logout');

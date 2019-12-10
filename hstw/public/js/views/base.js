@@ -4,11 +4,9 @@ $(window).ready(function(){
     cambiarestilo();
     cargarinicio();
 });
-
 $("#inicio").click(function(){
     cargarinicio();
 });
-
 $("#gestionar").click(function(){
     cargargestionarclientes();
 });
@@ -74,11 +72,12 @@ function cargargestionarclientes() {
                             "<td>" + r.rfc + "</td>" +
                             "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button'><i class='fas fa-eye'></i></button></td>" +
                             "<td><button class='btn btn-primary' id='btnEditar' type='button'><i class='fas fa-edit'></i></button></td>" +
-                            "<td><button class='btn btn-danger' id='btnEliminar' type='button'><i class='fas fa-trash-alt'></i></button></td>" +
+                            "<td><button class='btn btn-danger' id='btnEliminar' type='button' data-toggle='modal' data-target='#modalConfirm'><i class='fas fa-trash-alt'></i></button></td>"+
                             "</tr>";
                     });
                 }
                 nombres.append(cont);
+
                     $("#bodytabla tr td #btnEliminar").click(function(){
                         $(this).addClass('selected').siblings().removeClass('selected');
                         var idCliente=$(this).parent().siblings('td:first').html();
@@ -92,6 +91,25 @@ function cargargestionarclientes() {
         }
     });
 }//Jorge
+
+
+function deleteCliente(idCliente){
+    $("#modalSi").click(function(){
+        var token=$("input[name=_token]").val();
+        $.ajax({
+            url:"deleteCliente",
+            type:"post",
+            data: {id:idCliente,_token:token},
+            success:function (response) {
+                alert(response.status)
+            },
+            error: function() {
+                alert('There was some error performing the AJAX call!');
+            }
+        });
+    });
+
+}
 
 function eliminarcliente(cliente){
     var token=$("input[name=_token]").val();
@@ -107,6 +125,7 @@ function eliminarcliente(cliente){
         }
     });
 }
+
 
 function cargarverificarburo() {
     $(".content-wrapper").empty();
