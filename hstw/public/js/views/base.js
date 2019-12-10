@@ -75,7 +75,7 @@ function cargargestionarclientes() {
                         $(this).addClass('selected').siblings().removeClass('selected');
                         var idCliente=$(this).parent().siblings('td:first').html();
                         // alert("seleccionado "+idCliente);
-                        eliminarcliente(idCliente);
+                        deleteCliente(idCliente);
                     });
                 }, 1000);
         },
@@ -94,7 +94,7 @@ function deleteCliente(idCliente){
             type:"post",
             data: {id:idCliente,_token:token},
             success:function (response) {
-                alert(response.status)
+                alert(response)
             },
             error: function() {
                 alert('There was some error performing the AJAX call!');
@@ -105,18 +105,21 @@ function deleteCliente(idCliente){
 }
     
 function eliminarcliente(cliente){
-    var token=$("input[name=_token]").val();
-    $.ajax({
-        url:"deleteCliente",
-        type:"post",
-        data: {id:cliente, _token:token},
-        success:function (response) {
-            alert(response)
-        },
-        error: function() {
-            alert('There was some error performing the AJAX call!');
-        }
-    });
+    $("modalSi").click(function(){
+        var token=$("input[name=_token]").val();
+        $.ajax({
+            url:"deleteCliente",
+            type:"post",
+            data: {id:cliente, _token:token},
+            success:function (response) {
+                alert(response)
+            },
+            error: function() {
+                alert('There was some error performing the AJAX call!');
+            }
+        });
+    })
+    
 }
 
 

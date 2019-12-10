@@ -26,9 +26,11 @@ class ClienteController extends Controller
 
         $id=intval($r->id);
         dd($id);
-        $result = DB::table('clientes')->where('id','=', $id)->delete();
+        //$result = DB::table('clientes')->where('id','=', $id)->delete();
+        $result = DB::statement('delete from clientes where id_cliente = '.$id);
 //        dd($result);
         return $result;
+
     }
 }
 
