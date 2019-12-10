@@ -58,19 +58,26 @@ function cargargestionarclientes() {
             $(".content-wrapper").load("viewGestionarClientes");
             setTimeout(function(){
                 let nombres=$("#bodytabla");
-                $.each(response, function(i,r){
-                    cont+="<tr>" +
-                        "<td id='idcliente'>"+r.id_cliente+"</td>" +
-                        "<td>"+r.nombre+"</td>" +
-                        "<td>"+r.apellidos+"</td>" +
-                        "<td>"+r.fecha_nacimiento+"</td>" +
-                        "<td>"+r.curp+"</td>" +
-                        "<td>"+r.rfc+"</td>" +
-                        "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button'><i class='fas fa-eye'></i></button></td>"+
-                        "<td><button class='btn btn-primary' id='btnEditar' type='button'><i class='fas fa-edit'></i></button></td>"+
-                        "<td><button class='btn btn-danger' id='btnEliminar' type='button'><i class='fas fa-trash-alt'></i></button></td>"+
-                        "</tr>";
-                });
+                if (response.length==0){
+                    cont="<tr>" +
+                        "<td colspan='9' style='text-align: center'>No hay registros para mostrar</td>" +
+                        "</tr>"
+                }
+                else {
+                    $.each(response, function (i, r) {
+                        cont += "<tr>" +
+                            "<td>" + r.id_cliente + "</td>" +
+                            "<td>" + r.nombre + "</td>" +
+                            "<td>" + r.apellidos + "</td>" +
+                            "<td>" + r.fecha_nacimiento + "</td>" +
+                            "<td>" + r.curp + "</td>" +
+                            "<td>" + r.rfc + "</td>" +
+                            "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button'><i class='fas fa-eye'></i></button></td>" +
+                            "<td><button class='btn btn-primary' id='btnEditar' type='button'><i class='fas fa-edit'></i></button></td>" +
+                            "<td><button class='btn btn-danger' id='btnEliminar' type='button'><i class='fas fa-trash-alt'></i></button></td>" +
+                            "</tr>";
+                    });
+                }
                 nombres.append(cont);
                     $("#bodytabla tr td #btnEliminar").click(function(){
                         $(this).addClass('selected').siblings().removeClass('selected');
@@ -92,8 +99,8 @@ function eliminarcliente(cliente){
         url:"deleteCliente",
         type:"post",
         data: {id:cliente, _token:token},
-        success:function (response) {
-            alert(response)
+        success:function () {
+            cargargestionarclientes();
         },
         error: function() {
             alert('There was some error performing the AJAX call!');
