@@ -71,7 +71,7 @@ function cargargestionarclientes() {
                             "<td>" + r.curp + "</td>" +
                             "<td>" + r.rfc + "</td>" +
                             "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button' data-toggle='modal' data-target='#modalDir'><i class='fas fa-eye'></i></button></td>" +
-                            "<td><button class='btn btn-primary' id='btnEditar' type='button'><i class='fas fa-edit'></i></button></td>" +
+                            "<td><button class='btn btn-primary' id='btnEditar' type='button' data-toggle='modal' data-target='#modalupdate'><i class='fas fa-edit'></i></button></td>" +
                             "<td><button class='btn btn-danger' id='btnEliminar' type='button' data-toggle='modal' data-target='#modalConfirm'><i class='fas fa-trash-alt'></i></button></td>"+
                             "</tr>";
                     });
@@ -87,11 +87,10 @@ function cargargestionarclientes() {
                         var idCliente=$(this).parent().siblings('td:first').html();
                         deleteCliente(idCliente);
                     });
-                    $("#bodytabla tr td #btnDireccion").click(function(){
+                    $("#bodytabla tr td #btnEditar").click(function(){
                         $(this).addClass('selected').siblings().removeClass('selected');
                         var idCliente=$(this).parent().siblings('td:first').html();
-                        // alert("seleccionado "+idCliente);
-                        deleteCliente(idCliente);
+                        editarCliente(idCliente);
                     });
 
                 }, 1000);
@@ -101,6 +100,77 @@ function cargargestionarclientes() {
         }
     });
 }
+
+function editarCliente(idCliente){
+    var token=$("input[name=_token]").val();
+    setTimeout(function () {
+        var nombre=$("#txtNombreupdate");
+        var apellido=$("#txtApellidoupdate");
+        var date=$('#txFechaupdate');
+        var curp=$("#txtCURPupdate");
+        var rfc=$("#txtRFCupdate");
+        var calle=$("#txtCalleupdate");
+        var ninterior=$("#txtNinteriorupdate");
+        var nexterior=$("#txtNexteriorupdate");
+        var entrecalles=$("#txtEntreCallesupdate");
+        var codigopostal=$("#txtCodigoPostalupdate");
+        var colonia=$("#txtColoniaupdate");
+        var estado=$("#txtEstadoupdate");
+        var ciudad=$("#txtCiudadupdate");
+        var pais=$("#txtPaisupdate");
+        $.ajax({
+            url:"/getCliente",
+            type:"get",
+            data: {id:idCliente,_token: token},
+            dataType:'json',
+            success:function (response) {
+                nombre.val(response[0].nombre);
+                apellido.val(response[0].apellidos);
+                date.val(response[0].fecha_nacimiento);
+                curp.val(response[0].curp);
+                rfc.val(response[0].rfc);
+                calle.val(response[0].calle);
+                ninterior.val(response[0].num_interior);
+                nexterior.val(response[0].num_exterior);
+                entrecalles.val(response[0].entre_calles);
+                codigopostal.val(response[0].codigo_postal);
+                colonia.val(response[0].colonia);
+                estado.val(response[0].estado);
+                ciudad.val(response[0].ciudad);
+                pais.val(response[0].pais);
+            },
+            error: function(error, exception) {
+                alert('There was some error performing the AJAX call!'+exception);
+            }
+        });
+        $("#update").click(function(){
+            var fecha="";
+            if ($("#txFechaupdate").val() !== ""){
+                date = new Date($('#txFechaupdate').val());
+                day = date.getDate()+1;
+                month = date.getMonth() + 1;
+                year = date.getFullYear();
+                fecha=[year,month,day].join('-');
+            }
+            else{
+                fecha="0000-00-00";
+            }
+            $.ajax({
+                url:"/editarCte",
+                type:"post",
+                data: {id:idCliente,nombre:nombre.val(),apellido:apellido.val(),fecha:fecha,curp:curp.val(),rfc:rfc.val(),calle:calle.val(),
+                    ninterior:ninterior.val(),nexterior:nexterior.val(),
+                    entrecalles:entrecalles.val(),codigopostal:codigopostal.val(),colonia:colonia.val(),estado:estado.val(),ciudad:ciudad.val(),pais:pais.val(),_token: token},
+                success:function (response) {
+                },
+                error: function(error, exception) {
+                    alert('There was some error performing the AJAX call!'+exception);
+                }
+            });
+        });
+    },500);
+}
+
 function getdireccioncte(idCliente) {
     var token=$("input[name=_token]").val();
     var content="";
@@ -119,7 +189,8 @@ function getdireccioncte(idCliente) {
                 else {
                     // for(var i=0;i<response.length;i++){
                         $.each(response, function (i, r) {
-                            content += "<p><b>Calle: </b>"+r.calle+"</p>" +
+                            content +=
+                                "<p><b>Calle: </b>"+r.calle+"</p>" +
                                 "<p><b>Número interior: </b>"+r.num_interior+"</p>" +
                                 "<p><b>Número exterior: </b>"+r.num_exterior+"</p>" +
                                 "<p><b>Entre calles: </b>"+r.entre_calles+"</p>" +
@@ -140,6 +211,45 @@ function getdireccioncte(idCliente) {
     });
 }
 function setCliente(){
+    var token=$("input[name=_token]").val();
+    var nombre = $("#txtNombre");
+    var apellido=$("#txtApellido");
+
+    var fecha="";
+    if ($("#txFecha").val() !== ""){
+        date = new Date($('#txFecha').val());
+        day = date.getDate()+1;
+        month = date.getMonth() + 1;
+        year = date.getFullYear();
+        fecha=[year,month,day].join('-');
+    }
+    else{
+        fecha="0000-00-00";
+    }
+
+    var curp=$("#txtCURP");
+    var rfc=$("#txtRFC");
+    var calle=$("#txtCalle");
+    var ninterior=$("#txtNinterior");
+    var nexterior=$("#txtNexterior");
+    var entrecalles=$("#txtEntreCalles");
+    var codigopostal=$("#txtCodigoPostal");
+    var colonia=$("#txtColonia");
+    var estado=$("#txtEstado");
+    var ciudad=$("#txtCiudad");
+    var pais=$("#txtPais");
+    $.ajax({
+        url:"/registrarCte",
+        type:"post",
+        data: {nombre:nombre.val(),apellido:apellido.val(),fecha:fecha,curp:curp.val(),rfc:rfc.val(),calle:calle.val(),
+            ninterior:ninterior.val(),nexterior:nexterior.val(),
+            entrecalles:entrecalles.val(),codigopostal:codigopostal.val(),colonia:colonia.val(),estado:estado.val(),ciudad:ciudad.val(),pais:pais.val(),_token: token},
+        success:function (response) {
+        },
+        error: function(error, exception) {
+            alert('There was some error performing the AJAX call!'+exception);
+        }
+    })
 
 }
 function deleteCliente(idCliente){

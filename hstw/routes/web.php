@@ -44,6 +44,9 @@ Route::group(['middleware' => ['auth']], function () {
         return view('modulos.gestionarAreaCobranza');
     });
 
+    Route::post('editarCte', 'ClienteController@editarCte');
+    Route::post('registrarCte', 'ClienteController@registrarCte');
+    Route::get('getCliente', 'ClienteController@getCliente');
     Route::post('getdireccioncte', 'ClienteController@getdireccioncte');
     Route::post('deleteCliente', 'ClienteController@deleteCliente');
     Route::get('viewVerificarBuro', 'ClienteController@getviewverificarburo');
