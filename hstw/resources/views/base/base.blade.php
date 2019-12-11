@@ -14,6 +14,7 @@
 @section('css')
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="css/base/base.css">
+    <link rel="stylesheet" href="EasyAutocomplete-1.3.5/easy-autocomplete.css">
 @stop
 
 @section('js')
@@ -21,4 +22,5 @@
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/views/base.js"></script>
     <script src="js/views/gestionarClientes.js"></script>
+    <script src="EasyAutocomplete-1.3.5/jquery.easy-autocomplete.js"></script>
 @stop

@@ -91,6 +91,7 @@ function cargargestionarclientes() {
                     var idCliente = $(this).parent().siblings('td:first').html();
                     editarCliente(idCliente);
                 });
+                autocompletado();
 
             }, 1000);
         },
@@ -98,6 +99,60 @@ function cargargestionarclientes() {
             alert('There was some error performing the AJAX call!');
         }
     });
+}
+
+function autocompletado() {
+    var options = {
+        url: "getClientes",
+        getValue: "nombre",
+        placeholder: "Buscar un cliente por nombre.",
+        list: {
+            showAnimation: {
+                type: "fade", //normal|slide|fade
+                time: 400,
+                callback: function() {}
+            },
+            hideAnimation: {
+                type: "slide", //normal|slide|fade
+                time: 400,
+                callback: function() {}
+            },
+            onChooseEvent: function() {
+                var token = $("input[name=_token]").val();
+                $.ajax({
+                    url: "/nombresfiltrados",
+                    // en data se envían los datos
+                    data: { nombre: $("#inputBuscar").val(), _token: token },
+                    type: "post",
+                    dataType: 'json',
+                    success: function(response) {
+                        // alert("sss");
+                        var cont = "";
+                        var nombres = $("#bodytabla");
+                        nombres.empty();
+                        $.each(response, function(i, r) {
+                            cont += "<tr>" +
+                                "<td>" + r.id_cliente + "</td>" +
+                                "<td>" + r.nombre + "</td>" +
+                                "<td>" + r.apellidos + "</td>" +
+                                "<td>" + r.fecha_nacimiento + "</td>" +
+                                "<td>" + r.curp + "</td>" +
+                                "<td>" + r.rfc + "</td>" +
+                                "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button' data-toggle='modal' data-target='#modalDir'><i class='fas fa-eye'></i></button></td>" +
+                                "<td><button class='btn btn-primary' id='btnEditar' type='button' data-toggle='modal' data-target='#modalupdate'><i class='fas fa-edit'></i></button></td>" +
+                                "<td><button class='btn btn-danger' id='btnEliminar' type='button' data-toggle='modal' data-target='#modalConfirm'><i class='fas fa-trash-alt'></i></button></td>" +
+                                "</tr>";
+                        });
+                        nombres.append(cont);
+                    }
+                })
+            },
+            match: {
+                enabled: true
+            }
+        }
+    };
+    $("#inputBuscar").easyAutocomplete(options);
 }
 
 function editarCliente(idCliente) {
