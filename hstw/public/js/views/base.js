@@ -70,19 +70,22 @@ function cargargestionarclientes() {
                             "<td>" + r.fecha_nacimiento + "</td>" +
                             "<td>" + r.curp + "</td>" +
                             "<td>" + r.rfc + "</td>" +
-                            "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button'><i class='fas fa-eye'></i></button></td>" +
+                            "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button' data-toggle='modal' data-target='#modalDir'><i class='fas fa-eye'></i></button></td>" +
                             "<td><button class='btn btn-primary' id='btnEditar' type='button'><i class='fas fa-edit'></i></button></td>" +
                             "<td><button class='btn btn-danger' id='btnEliminar' type='button' data-toggle='modal' data-target='#modalConfirm'><i class='fas fa-trash-alt'></i></button></td>"+
                             "</tr>";
                     });
                 }
                 nombres.append(cont);
-
+                    $("#bodytabla tr td #btnDireccion").click(function(){
+                        $(this).addClass('selected').siblings().removeClass('selected');
+                        var idCliente=$(this).parent().siblings('td:first').html();
+                        getdireccioncte(idCliente);
+                    });
                     $("#bodytabla tr td #btnEliminar").click(function(){
                         $(this).addClass('selected').siblings().removeClass('selected');
                         var idCliente=$(this).parent().siblings('td:first').html();
-                        // alert("seleccionado "+idCliente);
-                        eliminarcliente(idCliente);
+                        deleteCliente(idCliente);
                     });
                 }, 1000);
         },
@@ -90,8 +93,46 @@ function cargargestionarclientes() {
             alert('There was some error performing the AJAX call!');
         }
     });
-}//Jorge
+}
 
+function getdireccioncte(idCliente) {
+    var token=$("input[name=_token]").val();
+    var content="";
+    $.ajax({
+        url:"/getdireccioncte",
+        type:"post",
+        data: {id:idCliente,_token: token},
+        dataType:'json',
+        success:function (response) {
+            setTimeout(function () {
+                let modalbody=$("#direccioncte");
+                modalbody.empty();
+                if (response.length==0){
+                    content="<p>No hay direcciones para mostrar</p>"
+                }
+                else {
+                    // for(var i=0;i<response.length;i++){
+                        $.each(response, function (i, r) {
+                            content += "<p><b>Calle: </b>"+r.calle+"</p>" +
+                                "<p><b>Número interior: </b>"+r.num_interior+"</p>" +
+                                "<p><b>Número exterior: </b>"+r.num_exterior+"</p>" +
+                                "<p><b>Entre calles: </b>"+r.entre_calles+"</p>" +
+                                "<p><b>Código postal: </b>"+r.codigo_postal+"</p>" +
+                                "<p><b>Colonia: </b>"+r.colonia+"</p>" +
+                                "<p><b>Estado: </b>"+r.estado+"</p>" +
+                                "<p><b>País: </b>"+r.pais+"</p>" +
+                                "<hr>";
+                        });
+                    // }
+                }
+                modalbody.append(content);
+            },500);
+        },
+        error: function(error, exception) {
+            alert('There was some error performing the AJAX call!'+exception);
+        }
+    });
+}
 
 function deleteCliente(idCliente){
     $("#modalSi").click(function(){
@@ -100,29 +141,13 @@ function deleteCliente(idCliente){
             url:"deleteCliente",
             type:"post",
             data: {id:idCliente,_token:token},
-            success:function (response) {
-                alert(response.status)
+            success:function () {
+                cargargestionarclientes();
             },
             error: function() {
                 alert('There was some error performing the AJAX call!');
             }
         });
-    });
-
-}
-
-function eliminarcliente(cliente){
-    var token=$("input[name=_token]").val();
-    $.ajax({
-        url:"deleteCliente",
-        type:"post",
-        data: {id:cliente, _token:token},
-        success:function () {
-            cargargestionarclientes();
-        },
-        error: function() {
-            alert('There was some error performing the AJAX call!');
-        }
     });
 }
 
