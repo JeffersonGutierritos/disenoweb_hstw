@@ -37,6 +37,7 @@ class ClienteController extends Controller
         'where direcciones.clientes_id_cliente='.$id);
         return $consulta;
     }
+
 }
 
 
