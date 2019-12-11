@@ -57,4 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('viewInicio', function(){
         return view('inicio');
     });
+    Route::get('calcularPrestamos', function(){
+        return view('modulos.CalcularPrestamos');
+    });
 });
