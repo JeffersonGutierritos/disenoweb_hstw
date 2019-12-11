@@ -10,7 +10,6 @@ class ClienteController extends Controller
 {
     public function getClientes(){
         $clientes = DB::table('clientes')->get();
-
         return $clientes;
     }
     public function getViewClientes(){
@@ -24,11 +23,19 @@ class ClienteController extends Controller
 
     public function deleteCliente(Request $r){
         $id=intval($r->id);
-//        dd($id);
         $deleted = DB::statement('delete from clientes where id_cliente ='.$id);
-//         DB::delete(DB::raw("delete from clientes where id_cliente= "+$id));
-        dd($deleted);
         return $deleted;
+    }
+
+    public function getdireccioncte(Request $r){
+        $id=intval($r->id);
+        $consulta = DB::select('select direcciones.calle, direcciones.num_interior, direcciones.num_exterior, direcciones.num_exterior, '.
+        'direcciones.entre_calles, direcciones.codigo_postal,'.
+        'direcciones.colonia, direcciones.estado, direcciones.pais '.
+        'from direcciones '.
+        'inner join clientes on direcciones.clientes_id_cliente = clientes.id_cliente '.
+        'where direcciones.clientes_id_cliente='.$id);
+        return $consulta;
     }
 
 }
