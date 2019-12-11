@@ -82,8 +82,15 @@ function cargargestionarclientes() {
                         $(this).addClass('selected').siblings().removeClass('selected');
                         var idCliente=$(this).parent().siblings('td:first').html();
                         // alert("seleccionado "+idCliente);
+                        getDirecciones(idCliente);
+                    });
+                    $("#bodytabla tr td #btnDireccion").click(function(){
+                        $(this).addClass('selected').siblings().removeClass('selected');
+                        var idCliente=$(this).parent().siblings('td:first').html();
+                        // alert("seleccionado "+idCliente);
                         deleteCliente(idCliente);
                     });
+                    
                 }, 1000);
         },
         error: function() {
@@ -92,7 +99,9 @@ function cargargestionarclientes() {
     });
 }//Jorge
 
-
+function setCliente(){
+    
+}
 function deleteCliente(idCliente){
     $("#modalSi").click(function(){
         var token=$("input[name=_token]").val();
@@ -101,38 +110,66 @@ function deleteCliente(idCliente){
             type:"post",
             data: {id:idCliente,_token:token},
             success:function (response) {
-                alert(response)
+                cargargestionarclientes()   
             },
             error: function() {
                 alert('There was some error performing the AJAX call!');
             }
         });
     });
-
-}
-
-function eliminarcliente(cliente){
-
-    var token=$("input[name=_token]").val();
-    $.ajax({
-        url:"deleteCliente",
-        type:"post",
-        data: {id:cliente, _token:token},
-        success:function () {
-            cargargestionarclientes();
-        },
-        error: function() {
-            alert('There was some error performing the AJAX call!');
-        }
-    });
-
 }
 
 
 function cargarverificarburo() {
     $(".content-wrapper").empty();
     $(".content-wrapper").load("viewVerificarBuro");
+    tipoBusqueda()
+    
+    
 }//Jorge
+
+function tipoBusqueda(){
+    setTimeout(function(){
+        $("#txtNombre").attr("disabled", false)
+        $("#txtFecha").attr("disabled", false)
+        $("#btnVerificarNombre").attr("disabled", false)
+
+        $("#porNombre").click(function(){
+            $("#txtNombre").attr("disabled", false)
+            $("#txtFecha").attr("disabled", false)
+            $("#btnVerificarNombre").attr("disabled", false)
+            //curp
+            $("#txtCURP").attr("disabled", true)
+            $("#btnVerificarCURP").attr("disabled", true)
+            //rfc
+            $("#txtRFC").attr("disabled", true)
+            $("#btnVerificarRFC").attr("disabled", true)
+        })
+        $("#porCURP").click(function(){
+            $("#txtCURP").attr("disabled", false)
+            $("#btnVerificarCURP").attr("disabled", false)
+            //rfc
+            $("#txtRFC").attr("disabled", true)
+            $("#btnVerificarRFC").attr("disabled", true)
+            //nombre
+            $("#txtNombre").attr("disabled", true)
+            $("#txtFecha").attr("disabled", true)
+            $("#btnVerificarNombre").attr("disabled", true)
+        })
+        $("#porRFC").click(function(){
+            $("#txtRFC").attr("disabled", false)
+            $("#btnVerificarRFC").attr("disabled", false)
+             //curp
+             $("#txtCURP").attr("disabled", true)
+             $("#btnVerificarCURP").attr("disabled", true)
+             //nombre
+             $("#txtNombre").attr("disabled", true)
+             $("#txtFecha").attr("disabled", true)
+             $("#btnVerificarNombre").attr("disabled", true)
+        })
+    }, 1000)
+
+}
 
 function cargarcalcularpre() {
     $(".content-wrapper").empty();
@@ -142,11 +179,13 @@ function cargarcalcularpre() {
 function cargargenrepopre() {
     $(".content-wrapper").empty();
     $(".content-wrapper").load("viewGenerarReportesPrestamos");
+    tipoBusqueda()
 }
 
 function cargarasignarpre() {
     $(".content-wrapper").empty();
     $(".content-wrapper").load("viewAsignarPrestamos");
+    tipoBusqueda()
 }
 
 function cargargestacob() {

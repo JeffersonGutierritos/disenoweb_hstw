@@ -30,6 +30,7 @@ class ClienteController extends Controller
         dd($deleted);
         return $deleted;
     }
+
 }
 
 
