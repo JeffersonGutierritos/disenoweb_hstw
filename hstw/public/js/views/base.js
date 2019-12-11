@@ -294,6 +294,9 @@ function tipoBusqueda(){
             //rfc
             $("#txtRFC").attr("disabled", true)
             $("#btnVerificarRFC").attr("disabled", true)
+            //nocliente
+            $("#txtNoCliente").attr("disabled", true)
+            $("#btnVerificarNoCliente").attr("disabled", true)
         })
         $("#porCURP").click(function(){
             $("#txtCURP").attr("disabled", false)
@@ -305,17 +308,37 @@ function tipoBusqueda(){
             $("#txtNombre").attr("disabled", true)
             $("#txtFecha").attr("disabled", true)
             $("#btnVerificarNombre").attr("disabled", true)
+            //nocliente
+            $("#txtNoCliente").attr("disabled", true)
+            $("#btnVerificarNoCliente").attr("disabled", true)
         })
         $("#porRFC").click(function(){
             $("#txtRFC").attr("disabled", false)
             $("#btnVerificarRFC").attr("disabled", false)
-             //curp
-             $("#txtCURP").attr("disabled", true)
-             $("#btnVerificarCURP").attr("disabled", true)
-             //nombre
-             $("#txtNombre").attr("disabled", true)
-             $("#txtFecha").attr("disabled", true)
-             $("#btnVerificarNombre").attr("disabled", true)
+            //curp
+            $("#txtCURP").attr("disabled", true)
+            $("#btnVerificarCURP").attr("disabled", true)
+            //nombre
+            $("#txtNombre").attr("disabled", true)
+            $("#txtFecha").attr("disabled", true)
+            $("#btnVerificarNombre").attr("disabled", true)
+            //nocliente
+            $("#txtNoCliente").attr("disabled", true)
+            $("#btnVerificarNoCliente").attr("disabled", true)
+        })
+        $("#porNoCliente").click(function(){
+            $("#txtNoCliente").attr("disabled", false)
+            $("btnVerificarNoCliente").attr("disabled", false)
+            //rfc
+            $("#txtRFC").attr("disabled", true)
+            $("#btnVerificarRFC").attr("disabled", true)
+            //curp
+            $("#txtCURP").attr("disabled", true)
+            $("#btnVerificarCURP").attr("disabled", true)
+            //nombre
+            $("#txtNombre").attr("disabled", true)
+            $("#txtFecha").attr("disabled", true)
+            $("#btnVerificarNombre").attr("disabled", true)
         })
     }, 1000)
 
@@ -323,7 +346,7 @@ function tipoBusqueda(){
 
 function cargarcalcularpre() {
     $(".content-wrapper").empty();
-    $(".content-wrapper").html("<h1>Calcular préstamo</h1>");
+    $(".content-wrapper").load("calcularPrestamos");
 }//Jorge
 
 function cargargenrepopre() {
