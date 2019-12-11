@@ -23,8 +23,7 @@ class ClienteController extends Controller
 
     public function deleteCliente(Request $r){
         $id=intval($r->id);
-        $deleted = DB::statement('delete from clientes where id_cliente ='.$id);
-        return $deleted;
+        $deleted = DB::statement('delete from hstw.clientes where clientes.id_cliente ='.$id);
     }
 
     public function getdireccioncte(Request $r){

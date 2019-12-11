@@ -302,7 +302,7 @@
       </div>
       <div class="modal-footer">
         <div class="col-6">
-          <button type="button" class="btn btn-block btn-primary" data-dismiss="modal" id="modalSi">Si</button>
+          <button type="button" class="btn btn-block btn-primary" data-dismiss="modal" id="borrar">Si</button>
         </div>
         <div class="col-6">
           <button type="button" class="btn btn-block btn-danger" data-dismiss="modal">No</button>
