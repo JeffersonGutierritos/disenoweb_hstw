@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    public function getClientes(){
-        $clientes = DB::table('clientes')->get();
+    public function getClientes(Request $r){
+        $nombre=$r->nombre;
+        $clientes = DB::table('clientes')
+        ->where('nombre','like','%'.$nombre.'%')
+        ->get();
         return $clientes;
     }
     public function getViewClientes(){

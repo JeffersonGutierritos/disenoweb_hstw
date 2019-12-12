@@ -48,52 +48,59 @@ function cargarinicio() {
 
 function cargargestionarclientes() {
     $(".content-wrapper").empty();
-    var cont = "";
+    $(".content-wrapper").load("viewGestionarClientes");
+    setTimeout(function() {
+        cargartablaclientes('');
+    }, 500);
+}
+
+function cargartablaclientes(nomCliente) {
+    var token = $("input[name=_token]").val();
     $.ajax({
         url: "/getClientes",
-        type: "get",
+        type: "post",
+        data: { nombre: nomCliente, _token: token },
+        dataType: "json",
         success: function(response) {
-            $(".content-wrapper").load("viewGestionarClientes");
-            setTimeout(function() {
-                let nombres = $("#bodytabla");
-                if (response.length == 0) {
-                    cont = "<tr>" +
-                        "<td colspan='9' style='text-align: center'>No hay registros para mostrar</td>" +
-                        "</tr>"
-                } else {
-                    $.each(response, function(i, r) {
-                        cont += "<tr>" +
-                            "<td>" + r.id_cliente + "</td>" +
-                            "<td>" + r.nombre + "</td>" +
-                            "<td>" + r.apellidos + "</td>" +
-                            "<td>" + r.fecha_nacimiento + "</td>" +
-                            "<td>" + r.curp + "</td>" +
-                            "<td>" + r.rfc + "</td>" +
-                            "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button' data-toggle='modal' data-target='#modalDir'><i class='fas fa-eye'></i></button></td>" +
-                            "<td><button class='btn btn-primary' id='btnEditar' type='button' data-toggle='modal' data-target='#modalupdate'><i class='fas fa-edit'></i></button></td>" +
-                            "<td><button class='btn btn-danger' id='btnEliminar' type='button' data-toggle='modal' data-target='#modalConfirm'><i class='fas fa-trash-alt'></i></button></td>" +
-                            "</tr>";
-                    });
-                }
-                nombres.append(cont);
-                $("#bodytabla tr td #btnDireccion").click(function() {
-                    $(this).addClass('selected').siblings().removeClass('selected');
-                    var idCliente = $(this).parent().siblings('td:first').html();
-                    getdireccioncte(idCliente);
+            var cont = "";
+            let nombres = $("#bodytabla");
+            nombres.empty();
+            if (response.length == 0) {
+                cont = "<tr>" +
+                    "<td colspan='9' style='text-align: center'>No hay registros para mostrar</td>" +
+                    "</tr>"
+            } else {
+                $.each(response, function(i, r) {
+                    cont += "<tr>" +
+                        "<td>" + r.id_cliente + "</td>" +
+                        "<td>" + r.nombre + "</td>" +
+                        "<td>" + r.apellidos + "</td>" +
+                        "<td>" + r.fecha_nacimiento + "</td>" +
+                        "<td>" + r.curp + "</td>" +
+                        "<td>" + r.rfc + "</td>" +
+                        "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button' data-toggle='modal' data-target='#modalDir'><i class='fas fa-eye'></i></button></td>" +
+                        "<td><button class='btn btn-primary' id='btnEditar' type='button' data-toggle='modal' data-target='#modalupdate'><i class='fas fa-edit'></i></button></td>" +
+                        "<td><button class='btn btn-danger' id='btnEliminar' type='button' data-toggle='modal' data-target='#modalConfirm'><i class='fas fa-trash-alt'></i></button></td>" +
+                        "</tr>";
                 });
-                $("#bodytabla tr td #btnEliminar").click(function() {
-                    $(this).addClass('selected').siblings().removeClass('selected');
-                    var idCliente = $(this).parent().siblings('td:first').html();
-                    deleteCliente(idCliente);
-                });
-                $("#bodytabla tr td #btnEditar").click(function() {
-                    $(this).addClass('selected').siblings().removeClass('selected');
-                    var idCliente = $(this).parent().siblings('td:first').html();
-                    editarCliente(idCliente);
-                });
-                autocompletado();
-
-            }, 1000);
+            }
+            nombres.append(cont);
+            $("#bodytabla tr td #btnDireccion").click(function() {
+                $(this).addClass('selected').siblings().removeClass('selected');
+                var idCliente = $(this).parent().siblings('td:first').html();
+                getdireccioncte(idCliente);
+            });
+            $("#bodytabla tr td #btnEliminar").click(function() {
+                $(this).addClass('selected').siblings().removeClass('selected');
+                var idCliente = $(this).parent().siblings('td:first').html();
+                deleteCliente(idCliente);
+            });
+            $("#bodytabla tr td #btnEditar").click(function() {
+                $(this).addClass('selected').siblings().removeClass('selected');
+                var idCliente = $(this).parent().siblings('td:first').html();
+                editarCliente(idCliente);
+            });
+            autocompletado();
         },
         error: function() {
             alert('There was some error performing the AJAX call!');
@@ -109,50 +116,28 @@ function autocompletado() {
         list: {
             showAnimation: {
                 type: "fade", //normal|slide|fade
-                time: 400,
+                time: 100,
                 callback: function() {}
             },
             hideAnimation: {
                 type: "slide", //normal|slide|fade
-                time: 400,
+                time: 100,
                 callback: function() {}
             },
             onChooseEvent: function() {
-                var token = $("input[name=_token]").val();
-                $.ajax({
-                    url: "/nombresfiltrados",
-                    // en data se envían los datos
-                    data: { nombre: $("#inputBuscar").val(), _token: token },
-                    type: "post",
-                    dataType: 'json',
-                    success: function(response) {
-                        // alert("sss");
-                        var cont = "";
-                        var nombres = $("#bodytabla");
-                        nombres.empty();
-                        $.each(response, function(i, r) {
-                            cont += "<tr>" +
-                                "<td>" + r.id_cliente + "</td>" +
-                                "<td>" + r.nombre + "</td>" +
-                                "<td>" + r.apellidos + "</td>" +
-                                "<td>" + r.fecha_nacimiento + "</td>" +
-                                "<td>" + r.curp + "</td>" +
-                                "<td>" + r.rfc + "</td>" +
-                                "<td><button class='btn btn-block btn-primary' id='btnDireccion' type='button' data-toggle='modal' data-target='#modalDir'><i class='fas fa-eye'></i></button></td>" +
-                                "<td><button class='btn btn-primary' id='btnEditar' type='button' data-toggle='modal' data-target='#modalupdate'><i class='fas fa-edit'></i></button></td>" +
-                                "<td><button class='btn btn-danger' id='btnEliminar' type='button' data-toggle='modal' data-target='#modalConfirm'><i class='fas fa-trash-alt'></i></button></td>" +
-                                "</tr>";
-                        });
-                        nombres.append(cont);
-                    }
-                })
+                buscarCliente();
             },
             match: {
                 enabled: true
-            }
-        }
+            },
+        },
+        adjustWidth: false
     };
     $("#inputBuscar").easyAutocomplete(options);
+}
+
+function buscarCliente() {
+    cargartablaclientes($("#inputBuscar").val());
 }
 
 function editarCliente(idCliente) {
@@ -231,7 +216,7 @@ function editarCliente(idCliente) {
                 },
                 success: function(response) {
                     setTimeout(function() {
-                        cargargestionarclientes();
+                        cargartablaclientes('');
                     }, 200);
                 },
                 error: function(error, exception) {
@@ -330,7 +315,7 @@ function setCliente() {
         },
         success: function(response) {
             setTimeout(function() {
-                cargargestionarclientes();
+                cargartablaclientes('');
             }, 200);
         },
         error: function(error, exception) {
@@ -348,7 +333,7 @@ function deleteCliente(idCliente) {
             type: "post",
             data: { id: idCliente, _token: token },
             success: function(response) {
-                cargargestionarclientes();
+                cargartablaclientes('');
             },
             error: function() {
                 alert('There was some error performing the AJAX call!');
