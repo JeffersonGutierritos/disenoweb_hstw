@@ -27,6 +27,7 @@ class ClienteController extends Controller
     }
 
     public function getdireccioncte(Request $r){
+
         $id=intval($r->id);
         $consulta = DB::select('select direcciones.calle, direcciones.num_interior, direcciones.num_exterior, direcciones.num_exterior, '.
         'direcciones.entre_calles, direcciones.codigo_postal,'.
@@ -89,6 +90,9 @@ class ClienteController extends Controller
                 'ciudad'=>$r->ciudad,
                 'pais'=>$r->pais,
                 'clientes_id_cliente'=>$id]);
+    }
+    public function getClienteNombre(Request $r){
+        
     }
 
 }

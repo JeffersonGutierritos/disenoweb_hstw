@@ -1,16 +1,14 @@
 <div class="container-fluid py-3">
   <div class="row">
     <div class="col-md-3 col-sm-1">
-      <div class="input-group mb-1">
-        <input type="text" class="form-control" id="inputBuscar">
-      </div>
+      <input type="text" class="form-control" id="inputBuscar">
     </div>
-    <div class="col-md-3 my-2">
+    <div class="col-md-3">
       <button type="button" class="btn-danger btn" id="btnRegistrar" data-toggle="modal" data-target="#modalRegistrar">Registrar Cliente</button>
     </div>
   </div>
   <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 my-2">
               <table class="table table-hover table-responsive">
                     <thead>
                         <tr class="bg-danger">
@@ -264,7 +262,7 @@
     <div class="modal-dialog-scrollable modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Dirección de cliente</h5>
+                <h5 class="modal-title bg-danger" id="exampleModalLabel">Dirección de cliente</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

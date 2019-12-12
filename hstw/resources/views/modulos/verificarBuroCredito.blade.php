@@ -21,9 +21,13 @@
                     <form action="">
                         <div class="form-group">      
                             <div class="row">
-                                <div class="col-md-7">
-                                    <label for="txtNombre">Nombre del cliente</label>
-                                    <input id="txtNombre" type="text" class="form-control" placeholder="Nombre y apellidos" disabled>
+                                <div class="col-md-5">
+                                    <label for="txtNombre">Nombre/s</label>
+                                    <input id="txtNombre" type="text" class="form-control" placeholder="Nombre" disabled>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="txtApellidos">Apellidos</label>
+                                    <input id="txtApellidos" type="text" class="form-control" placeholder="Apellidos" disabled>
                                 </div>
                             </div>
                                 <div class="row">

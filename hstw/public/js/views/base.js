@@ -37,7 +37,7 @@ $("#asigtar").click(function() {
 // JAVASCRIPT //
 
 function cambiarestilo() {
-    $(".nav-header").css("color", "#000000")
+    $(".main-header").css("color", "#dc3546")
     $(".fa-bars").css("filter", "invert(100%)")
 }
 
@@ -363,6 +363,24 @@ function cargarverificarburo() {
     $(".content-wrapper").load("viewVerificarBuro");
     tipoBusqueda()
 
+    setTimeout(function(){
+        var fecha = "";
+    if ($("#txFecha").val() !== "") {
+        date = new Date($('#txFecha').val());
+        day = date.getDate() + 1;
+        month = date.getMonth() + 1;
+        year = date.getFullYear();
+        fecha = [year, month, day].join('-');
+    } else {
+        fecha = "0000-00-00";
+    }
+
+        $('#btnVerificarNombre').click(function(){
+            
+        })
+    }, 100)
+    
+
 
 } //Jorge
 
@@ -371,9 +389,11 @@ function tipoBusqueda() {
         $("#txtNombre").attr("disabled", false)
         $("#txtFecha").attr("disabled", false)
         $("#btnVerificarNombre").attr("disabled", false)
+        $("#txtApellidos").attr("disabled", false)
 
         $("#porNombre").click(function() {
             $("#txtNombre").attr("disabled", false)
+            $("#txtApellidos").attr("disabled", false)
             $("#txtFecha").attr("disabled", false)
             $("#btnVerificarNombre").attr("disabled", false)
                 //curp
@@ -394,6 +414,7 @@ function tipoBusqueda() {
             $("#btnVerificarRFC").attr("disabled", true)
                 //nombre
             $("#txtNombre").attr("disabled", true)
+            $("#txtApellidos").attr("disabled", true)
             $("#txtFecha").attr("disabled", true)
             $("#btnVerificarNombre").attr("disabled", true)
                 //nocliente
@@ -408,6 +429,7 @@ function tipoBusqueda() {
             $("#btnVerificarCURP").attr("disabled", true)
                 //nombre
             $("#txtNombre").attr("disabled", true)
+            $("#txtApellidos").attr("disabled", true)
             $("#txtFecha").attr("disabled", true)
             $("#btnVerificarNombre").attr("disabled", true)
                 //nocliente
@@ -416,7 +438,6 @@ function tipoBusqueda() {
         })
         $("#porNoCliente").click(function() {
             $("#txtNoCliente").attr("disabled", false)
-
             $("#btnVerificarNoCliente").attr("disabled", false)
             //rfc
             $("#txtRFC").attr("disabled", true)
@@ -426,6 +447,7 @@ function tipoBusqueda() {
             $("#btnVerificarCURP").attr("disabled", true)
                 //nombre
             $("#txtNombre").attr("disabled", true)
+            $("#txtApellidos").attr("disabled", true)
             $("#txtFecha").attr("disabled", true)
             $("#btnVerificarNombre").attr("disabled", true)
         })

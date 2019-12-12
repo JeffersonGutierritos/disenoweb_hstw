@@ -18,9 +18,9 @@
                                 </div>
                                 <div class="col-md-5">
                                     <label for="slctTipo" class="font-weight-bold">Asignar tarjeta de:</label>
-                                    <select name="slctTipo" id="slctTipo" class="form-control">
-                                        <option value="debito">Débito</option>
+                                    <select name="slctTipo" id="slctTipo" class="form-control">                      
                                         <option value="credito">Crédito</option>
+                                        <option value="debito">Débito</option>
                                     </select>
                                 </div>
                             </div>
