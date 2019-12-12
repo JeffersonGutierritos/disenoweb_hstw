@@ -218,7 +218,7 @@ function tipoBusqueda(){
         })
         $("#porNoCliente").click(function(){
             $("#txtNoCliente").attr("disabled", false)
-            $("btnVerificarNoCliente").attr("disabled", false)
+            $("#btnVerificarNoCliente").attr("disabled", false)
             //rfc
             $("#txtRFC").attr("disabled", true)
             $("#btnVerificarRFC").attr("disabled", true)
@@ -259,4 +259,26 @@ function cargargestacob() {
 function cargarasigtar() {
     $(".content-wrapper").empty();
     $(".content-wrapper").load("viewAsignarTarjetas");
+    tipoBusqueda()
+
+    setTimeout(function(){
+        $("#slctTipo").change(function(){
+            var tipo = $(this).val();
+            if (tipo == "credito"){
+                $("#btnVerificarNombre").html("Verificar")
+                $("#btnVerificarRFC").html("Verificar")
+                $("#btnVerificarCURP").html("Verificar")
+                $("#btnVerificarNoCliente").html("Verificar")
+                
+            } else if(tipo == "debito"){
+                $("#btnVerificarNombre").html("Asignar")
+                $("#btnVerificarRFC").html("Asignar")
+                $("#btnVerificarCURP").html("Asignar")
+                $("#btnVerificarNoCliente").html("Asignar")
+            }
+        })
+        
+    },400)
+    
+      
 }
