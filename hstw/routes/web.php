@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/hstw', function () {
         return view('base.base');
     });
-    Route::get('getClientes', 'ClienteController@getClientes');
+    Route::post('getClientes', 'ClienteController@getClientes');
     Route::get('viewGestionarClientes', function () {
         return view('modulos.gestionarClientes');
     });

@@ -1,15 +1,24 @@
 <div class="container-fluid py-3">
   <div class="row">
-    <div class="col-md-3 col-sm-1">
-      <input type="text" class="form-control" id="inputBuscar">
+    <div class="col-md-3 my-2 col-sm-1">
+      <div class="input-group mb-1">
+        <input type="text" class="form-control" id="inputBuscar">
+        <div class="input-group-append">
+          <button class="btn btn-danger" type="button" id="btnBuscar" onclick="buscarCliente();">
+            <i class="fas fa-fw fa-search"></i>
+          </button>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-3">
       <button type="button" class="btn-danger btn" id="btnRegistrar" data-toggle="modal" data-target="#modalRegistrar">Registrar Cliente</button>
     </div>
   </div>
   <div class="row">
-      <div class="col-md-12 my-2">
-              <table class="table table-hover table-responsive">
+      <div class="col-md-12">
+        <div class="table-responsive">
+        <table class="table table-hover">
                     <thead>
                         <tr class="bg-danger">
                           <th scope="col">#</th>
@@ -24,10 +33,9 @@
                         </tr>
                       </thead>
                       <tbody id="bodytabla">
-
-
                       </tbody>
               </table>
+        </div>
       </div>
   </div>
 </div>
@@ -135,7 +143,7 @@
         </div>
         <div class="modal-footer">
           <div class="col-6">
-              <button type="button" class="btn btn-block btn-primary" id="modalSi" onclick="setCliente();">Confirmar</button>
+              <button type="button" class="btn btn-block btn-primary" data-dismiss="modal" id="modalSi" onclick="setCliente();">Confirmar</button>
           </div>
           <div class="col-6">
               <button type="button" class="btn btn-block btn-danger" data-dismiss="modal">Cancel</button>

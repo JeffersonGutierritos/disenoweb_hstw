@@ -15,4 +15,12 @@ i .btn .fa-search .fa-print .fa-credit-card {
   font-size: 48px;
 }
 
+.input-group .easy-autocomplete {
+  width: 80%;
+}
+
+.input-group-append {
+  width: 20%;
+}
+
 /*# sourceMappingURL=base.css.map */
