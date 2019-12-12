@@ -14,27 +14,22 @@
     </div>
     <div class="row">
       <div class="col-md-8">
-          <div class="card mx-2">
-              <div class="card-body">
-                      <table class="table table-hover table-responsive">
-                            <thead>
-                                <tr class="bg-danger">
-                                  <th scope="col">#</th>
-                                  <th scope="col">Nombre</th>
-                                  <th scope="col">Apellidos</th>
-                                  <th scope="col">Fecha de Nacimiento</th>
-                                  <th scope="col">CURP</th>
-                                  <th scope="col">RFC</th>
-                                  <th scope="col">Direccion/es</th>
-                                </tr>
-                              </thead>
-                              <tbody id="bodytabla">
+        <table class="table table-hover table-responsive">
+          <thead>
+            <tr class="bg-danger">
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellidos</th>
+              <th scope="col">Fecha de Nacimiento</th>
+              <th scope="col">CURP</th>
+              <th scope="col">RFC</th>
+              <th scope="col">Direccion/es</th>
+            </tr>
+          </thead>
+          <tbody id="bodytabla">
                               
                               
-                              </tbody>
-                      </table>
-              </div>
-          </div>
+          </tbody>      
       </div>
     </div>
   </div>  
