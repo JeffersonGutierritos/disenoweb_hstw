@@ -1,6 +1,6 @@
 <div class="container-fluid py-3">
     <div class="row">
-      <div class="col-md-3 col-sm-1">
+      <div class="col-md-6 col-sm-1">
         <h1 class="header">Área de cobranza</h1>
         <div class="input-group mb-1">
           <input type="text" class="form-control" placeholder="Buscar cliente por nombre" id="inputBuscar">

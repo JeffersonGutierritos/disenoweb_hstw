@@ -44,7 +44,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-primary">Calcular</button>
+                                <button class="btn btn-primary" id="btnCalcular">Calcular</button>
                             </div>
                         </div>   
                     </form>

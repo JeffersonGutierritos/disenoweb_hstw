@@ -1,6 +1,6 @@
 <div class="container-fluid py-3">
   <div class="row">
-    <div class="col-md-3 my-2 col-sm-1">
+    <div class="col-md-3 col-sm-1">
       <div class="input-group mb-1">
         <input type="text" class="form-control" id="inputBuscar">
         <div class="input-group-append">
@@ -269,8 +269,8 @@
 <div class="modal fade" id="modalDir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog-scrollable modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title bg-danger" id="exampleModalLabel">Dirección de cliente</h5>
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title " id="exampleModalLabel">Dirección de cliente</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

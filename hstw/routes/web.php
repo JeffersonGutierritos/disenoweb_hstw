@@ -26,6 +26,8 @@ Route::get('getClientes', 'ClienteController@getClientes');
 Route::get('/login', function () {
     return view('login.login');
 });
+
+
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -65,4 +67,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('calcularPrestamos', function(){
         return view('modulos.CalcularPrestamos');
     });
+    Route::get('verificarBuroNombre', 'ClienteController@verificarBuroNombre');
+    Route::get('verificarBuroRFC', 'ClienteController@verificarBuroRFC');
+    Route::get('verificarBuroCURP', 'ClienteController@verificarBuroCURP');
+    Route::get('verificarBuroNoCliente', 'ClienteController@verificarBuroNoCliente');
+
+    Route::get('verBuroNoCliente', 'ClienteController@verBuroNoCliente');
+    Route::get('viewPdfBuro', function(){
+        return view('modulos.pdfBuroCredito');
+    });
+    Route::get('verPdfBuro', 'ClienteController@pdfBuro');
+
 });

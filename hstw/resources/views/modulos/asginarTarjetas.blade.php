@@ -24,6 +24,16 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="slctCompania" class="font-weight-bold">Compañía de servicio:</label>
+                                    <select name="slctCompania" id="slctCompania" class="form-control">                      
+                                        <option value="mastercard">Master Card</option>
+                                        <option value="visa">Visa</option>
+                                        <option value="americanexpress">American Express</option>
+                                    </select>
+                                </div>
+                            </div>
                             <hr>
                             <form action="">
                                     <div class="form-group">      
