@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `hstw`.`pagos` (
   `capital_final` VARCHAR(45) NOT NULL,
   `prestamos_id_prestamo` INT(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id_pago`),
-  INDEX `fk_pagos_prestamos1_idx` (`prestamos_id_prestamo)),
+  INDEX `fk_pagos_prestamos1_idx` (`prestamos_id_prestamo`),
   CONSTRAINT `fk_pagos_prestamos1`
     FOREIGN KEY (`prestamos_id_prestamo`)
     REFERENCES `hstw`.`prestamos` (`id_prestamo`)

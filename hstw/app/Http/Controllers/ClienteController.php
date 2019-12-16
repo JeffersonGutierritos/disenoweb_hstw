@@ -151,24 +151,20 @@ class ClienteController extends Controller
             foreach ($sql as $estado)
                 if($estado->comportamiento == "rojo")
                     $verificacion = "False";
-                else{
-                    DB::table('tarjetas')->insertGetId(
-                        ['clientes_id_cliente' => $r->numero,
-                        'tipo_tarjeta'=>$r->tipo,
-                        'fecha_vencimiento'=>$r->fecha,
-                        'compania_servicio'=>$r->compania]);
-            }
-        }else{
-            DB::table('tarjetas')->insertGetId(
-                ['clientes_id_cliente' => $r->numero,
-                'tipo_tarjeta'=>$r->tipo,
-                'fecha_vencimiento'=>$r->fecha,
-                'compania_servicio'=>$r->compania]);
         }
-        
-            
+
+
         return $verificacion;
     }
+
+    public function setTarjeta(Request $r){
+        DB::table('tarjetas')->insertGetId(
+            ['clientes_id_cliente' => $r->numero,
+            'tipo_tarjeta'=>$r->tipo,
+            'fecha_vencimiento'=>,
+            'compania_servicio'=>$r->compania]);
+    }
+
     public function verBuroNoCliente(Request $r){
         
         $id=DB::table('consultas_buro')->insertGetId(
@@ -184,10 +180,11 @@ class ClienteController extends Controller
         return $sql;
     }
 
-    public function pdfBuro(){
+    public function pdfBuro(Request $r){
         
         $pdf = PDF::loadView('modulos.pdfBuroCredito');
         return $pdf->stream();
+        
     }
 
 }

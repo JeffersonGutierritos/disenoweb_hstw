@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('viewPdfBuro', function(){
         return view('modulos.pdfBuroCredito');
     });
-    Route::get('verPdfBuro', 'ClienteController@pdfBuro');
+    Route::get('verPdfBuro/{data}', 'ClienteController@pdfBuro');
+    Route::get('setTarjeta', 'ClienteController@setTarjeta');
+    
 
 });

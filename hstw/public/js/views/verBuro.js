@@ -1,4 +1,4 @@
-unction verBuro(){
+function verBuro(){
     //nombre
 $('#btnVerificarNombre').click(function(){
     var nombres = $('#txtNombre').val();
@@ -82,12 +82,12 @@ $('#btnVerificarNoCliente').click(function(){
                 '<h4 class="header">Datos generales</h4>'+
                 '<hr>'+
                 '<div class="row">'+
-                    '<div class="col-md-6 font-weight-bold">'+
-                        '<p>Nombre del cliente:</p>'+
-                        '<p>Fecha de nacimiento:</p>'+
-                        '<p>RFC:</p>'+
-                        '<p>Folio de consulta:</p>'+
-                        '<p>Fecha de registro de BC:</p>'+
+                    '<div class="col-md-6">'+
+                        '<p><b>Nombre del cliente: </b></p>'+
+                        '<p><b>Fecha de nacimiento: </b></p>'+
+                        '<p><b>RFC: </b></p>'+
+                        '<p><b>Folio de consulta: </b></p>'+
+                        '<p><b>Fecha de registro de BC: </b></p>'+
                     '</div>'+
                     
                     '<div class="col-md-6">'+
@@ -102,9 +102,7 @@ $('#btnVerificarNoCliente').click(function(){
                 '<h4 class="header">Domicilios Reportados</h4>'+
                 '<hr>'+
                 '<div class="row">'+
-                    '<div class="col-md-6">'+
-                       
-                        
+                    '<div class="col-md-6">'+    
                         "<p><b>Calle: </b>" + response[0].calle + "</p>" +
                         "<p><b>Número interior: </b>" + response[0].num_interior + "</p>" +
                         "<p><b>Número exterior: </b>" + response[0].num_exterior + "</p>" +
@@ -133,19 +131,19 @@ $('#btnVerificarNoCliente').click(function(){
                 '</div>'+
                 '<br>'+
                 '<div class="form-group">'+
-                    '<label class="font-weight-bold" for="btnImprimir">Imprimir reporte:</label>'+
-                    '<button role="button" class="btn btn-primary" id="btnImprimir"><i class="fas fa-print"></i></button>'+
+                    '<label class="font-weight-bold" for="btnImprimir">Imprimir reporte:</label><br>'+
+                    '<button class="btn btn-primary" id="btnImprimir"><i class="fas fa-print"></i></button>'+
                 '</div>'+ 
                 '</div>'+
                 '</div>';
 
-                cb.append(content);
-
-                $("#btnImprmir").click(function(){
-                    alert("hola")
-                })
-                                 
-            
+                cb.append(content);             
+                setTimeout(function(){
+                    $("#btnImprimir").click(function(){
+                        var data = JSON.stringify(response[0])
+                        window.location.href = "verPdfBuro/"+data
+                    })
+                }, 500)
             }, 200)
             
             
@@ -155,5 +153,4 @@ $('#btnVerificarNoCliente').click(function(){
         }
     });
 })
-
 }
